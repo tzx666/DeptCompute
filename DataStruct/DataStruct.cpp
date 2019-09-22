@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 class LinkList {
 	//内部封装一个链表，实现链表的增删查改
 private:
@@ -10,14 +9,24 @@ private:
 	};
 	typedef struct node* Lists;
 	node* head;
+	Lists getStructDate(Lists &l,int index) {
+		
+	}//寻找链表全局返回某个给定索引
 public:
 	LinkList();
-	int insertnode(int n);//在链笔末端插入一节点
+	int insertnode(int n);//在链表末端插入一节点
 	int insertNewNode(int n, int value);//在给定值后面插入节点
 	int deletenode(int n);//删除给定节点
 	int getIndex(int n);//查询该节点是否存在，如果存在则返回该节点
-	int cleanList();//清空链笔
-	void show();
+	int cleanList();//清空链表
+	int insertforntlist(int n) {
+		Lists p = new node;
+		p->value = n;
+		p->next = head->next;
+		head->next = p;
+		return 0;
+	}//前插入链表
+	void show();//显示链表
 };
 LinkList::LinkList() {
 	head = new node;
@@ -99,6 +108,7 @@ int main() {
 	list.show();
 	list.deletenode(3);
 	list.show();
-	cout << list.getIndex(7)+1 << endl;;
+	list.insertforntlist(4);
+	list.show();
 	return 0;
 }
