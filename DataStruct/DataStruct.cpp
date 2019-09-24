@@ -22,7 +22,18 @@ private:
 			count++; p = p->next;
 		}
 		return NULL;
-	}//寻找链表全局返回某个给定索引
+	}//根据顺序寻找链表全局返回某个给定索引
+	Lists getListData(Lists& l, int n) {
+		Lists p = l->next;
+		if (l == NULL)
+			return NULL;
+		while (p != NULL) {
+			if (n==p->value)
+				return p;
+			p = p->next;
+		}
+		return NULL;
+	}//根据查找数值返回第一个并返回该节点链表指针
 public:
 	LinkList();
 	int addAtTail(int n);//在链表末端插入一节点
@@ -35,7 +46,7 @@ public:
 			return p->value;
 		else
 			return -1;
-	}
+	}//根据链表节点返回链表结点的值
 	int cleanList();//清空链表
 	int get(int index);//获取第index个节点，如果节点无效则返回-1
 	int addAtHead(int n) {
