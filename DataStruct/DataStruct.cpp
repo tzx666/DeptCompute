@@ -9,30 +9,62 @@ private:
 	};
 	typedef struct node* Lists;
 	node* head;
-	Lists getStructDate(Lists &l,int index) {
-		
-	}//寻找链表全局返回某个给定索引
+	Lists getStructData(Lists &l,int index) {
+		Lists p = l->next;
+		int count = 0;
+		if (index < 0)
+			return NULL;
+		if (l ==NULL)
+			return NULL;
+		while (p != NULL) {
+			if (count == index)
+				return p;
+			count++; p = p->next;
+		}
+		return NULL;
+	}//根据顺序寻找链表全局返回某个给定索引
+	Lists getListData(Lists& l, int n) {
+		Lists p = l->next;
+		if (l == NULL)
+			return NULL;
+		while (p != NULL) {
+			if (n==p->value)
+				return p;
+			p = p->next;
+		}
+		return NULL;
+	}//根据查找数值返回第一个并返回该节点链表指针
 public:
 	LinkList();
-	int insertnode(int n);//在链表末端插入一节点
+	int addAtTail(int n);//在链表末端插入一节点
 	int insertNewNode(int n, int value);//在给定值后面插入节点
 	int deletenode(int n);//删除给定节点
 	int getIndex(int n);//查询该节点是否存在，如果存在则返回该节点
+	int gets(int index) {
+		Lists p = getStructData(head, index);
+		if (p != NULL)
+			return p->value;
+		else
+			return -1;
+	}//根据链表节点返回链表结点的值
 	int cleanList();//清空链表
-	int insertforntlist(int n) {
+	int get(int index);//获取第index个节点，如果节点无效则返回-1
+	int addAtHead(int n) {
 		Lists p = new node;
 		p->value = n;
 		p->next = head->next;
 		head->next = p;
 		return 0;
 	}//前插入链表
+	void addAtIndex(int index, int val);//向index前的某个插入节点
+	void deleteAtIndex(int index);//删除有效地址的节点
 	void show();//显示链表
 };
 LinkList::LinkList() {
 	head = new node;
 	head->next = nullptr;
 }
-int LinkList::insertnode(int n) {
+int LinkList::addAtTail(int n) {
 	Lists p = head;
 	while (p->next != nullptr)
 		p = p->next;
@@ -99,16 +131,71 @@ void LinkList::show() {
 	}
 	cout << endl;
 }
+int LinkList::get(int index) {
+	if (head == NULL)
+		return - 1;
+	Lists p = head;
+	//cout << p->value << endl;
+	int count = -1;
+	while (p->next != NULL) {
+		if (count == index)
+			return p->value;
+		count++;
+		p = p->next;
+	}
+	if (count == index)
+		return p->value;
+	else
+	return -1;
+}
+void LinkList::addAtIndex(int index, int val) {
+	Lists p = head;
+	int count = -1;
+	if (index < 0) {
+		addAtHead(val);
+	}
+	else if(index==0)
+		addAtHead(val);
+	else{
+		while (p->next != NULL) {
+			if (count == index-1) {
+				Lists q = new node;
+				q->value = val;
+				q->next = p->next;
+				p->next = q;
+				count++;
+		}
+		p = p->next; count++;
+		//cout << count << endl;
+	}
+	if (index == count+1) {
+		addAtTail(val);
+	}
+	}
+}
+void LinkList::deleteAtIndex(int index) {
+	Lists p = head;
+	//cout << p->value << endl;
+	int count = -1;
+	while (p->next != NULL) {
+		if (count + 1 == index) {
+			Lists q = p->next;
+			p->next = p->next->next;
+			delete q; break;
+		}
+		count++;
+		p = p->next;
+	}
+}
 int main() {
 	LinkList list = LinkList();
-	list.insertnode(1);
-	list.insertnode(2);
-	list.insertnode(3);
-	list.insertNewNode(7, 2);
+	list.addAtHead(1);
+	list.addAtTail(3);
+	list.addAtIndex(1,2);
 	list.show();
-	list.deletenode(3);
-	list.show();
-	list.insertforntlist(4);
-	list.show();
+	cout << list.gets(0) << endl;
+	cout << list.gets(1) << endl;
+	cout << list.gets(2) << endl;
+	cout << list.gets(3) << endl;
 	return 0;
 }
