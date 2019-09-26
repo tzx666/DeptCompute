@@ -44,7 +44,7 @@ double DeptComputer::ranglari(double X,vector<double>Xi,vector<double>Yi){
 double DeptComputer::newtion(double X,vector<double>Xi,vector<double>Yi){
 	int n1;
 	n1=Xi.size();
-	//ÏÈ¼ÆËãËùÓÐµÄ²åÖµ£¬µÚÒ»ÁÐn¸ö£¬µÚ¶þÁÐn-1¸ö£¬¹²n-n(n-1)/2¸öÖµ 
+	//使用牛顿插值法
 	//double val[100][100];
 	vector<vector<double> >val(n1,vector<double>());
 	for(int i=0;i<n1;i++)
@@ -57,7 +57,7 @@ double DeptComputer::newtion(double X,vector<double>Xi,vector<double>Yi){
 	for(int i=1;i<n1;i++)
 		for(int j=i;j<n1;j++)
 			val[j][i]=(val[j][i-1]-val[j-1][i-1])/(Xi[j]-Xi[j-i]);
-	//¼ÆËãn½×²åÖµ
+	//计算k阶差分函数，从f（x)到f(x1..xn)
 	/*for(int i=0;i<n1;i++){
 		for(int j=0;j<n1;j++)
 		cout<<val[i][j]<<" ";
@@ -73,6 +73,7 @@ double DeptComputer::newtion(double X,vector<double>Xi,vector<double>Yi){
 		}
 		t=t+y*val[i][i];
 		//cout<<t<<endl;
-	}	
+	}
+	//根据差分值和已知x带入多项式预测结果	
 	return t;
 }
