@@ -12,9 +12,9 @@
 	<File>..\Header-Files\Compute.cpp</File>
 	<File>..\Header-Files\Compute.h</File>
 	<File>..\Source-Files\test.cpp</File>
-<Attribute topline="43" x="3" y="60">..\Header-Files\Compute.cpp</Attribute>
-<Attribute topline="1" x="29" y="15">..\Header-Files\Compute.h</Attribute>
-<Attribute topline="28" x="14" y="51">..\Source-Files\test.cpp</Attribute>
+<Attribute topline="67" x="1" y="79">..\Header-Files\Compute.cpp</Attribute>
+<Attribute topline="16" x="1" y="19">..\Header-Files\Compute.h</Attribute>
+<Attribute topline="1" x="16" y="43">..\Source-Files\test.cpp</Attribute>
 <FolderState>111</FolderState>
 <DefConfig>mingw5</DefConfig>
 <Builder name="mingw" type="MinGW" version="1.0">
