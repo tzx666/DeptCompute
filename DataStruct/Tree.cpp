@@ -16,6 +16,13 @@ class Tree{
                 struct node * rchild;
                 /* data */
             };
-            
+            node * Atree;
             
 };
+Tree::Tree(){
+    Atree=new node;
+    Atree->lchild=Atree->rchild=NULL;
+}
+int main(){
+    return 0;
+}

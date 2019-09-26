@@ -4,14 +4,14 @@
 using namespace std;
 /*
 class DeptComputer{
-//é•¿æœŸæ•°å€¼æ–¹æ³•è®¡ç®—é›†åˆç±»
+//³¤ÆÚÊıÖµ·½·¨¼ÆËã¼¯ºÏÀà
 public:int multinomialReduction(vector<int> q,int x);
        int multinomialReduction(int w[],int size,int x);
-       //å¤šé¡¹å¼åŒ–ç®€è¿­ä»£ï¼šy=ax^n+an-1^x^n-1...
-       //å…ˆè®¡ç®—v=an,è®¡ç®—anx+b,v=aix+b
-       //åŸè®¡ç®—æ¬¡æ•°ä¸ºn^2æ¬¡ï¼Œç»è¿‡è¿­ä»£å˜ä¸ºnæ¬¡ä¹˜æ³•ï¼Œæ—¶é—´å¤æ‚åº¦å˜å°
+       //¶àÏîÊ½»¯¼òµü´ú£ºy=ax^n+an-1^x^n-1...
+       //ÏÈ¼ÆËãv=an,¼ÆËãanx+b,v=aix+b
+       //Ô­¼ÆËã´ÎÊıÎªn^2´Î£¬¾­¹ıµü´ú±äÎªn´Î³Ë·¨£¬Ê±¼ä¸´ÔÓ¶È±äĞ¡
        double SquareBoot(double a);
-       //è¿­ä»£æ³•æ±‚å¼€æ–¹å€¼ï¼Œè®¾å®šå›ºå®šè¿­ä»£åˆå€¼a0
+       //µü´ú·¨Çó¿ª·½Öµ£¬Éè¶¨¹Ì¶¨µü´ú³õÖµa0
 private:int v,b;
 };
 int DeptComputer::multinomialReduction(vector<int>q,int x){
