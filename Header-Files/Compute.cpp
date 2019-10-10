@@ -2,6 +2,7 @@
 #include<cmath>
 #include<iostream>
 using namespace std;
+ 
 DeptComputer::DeptComputer(){
 
 }
@@ -80,7 +81,24 @@ double DeptComputer::newtion(double X,vector<double>Xi,vector<double>Yi){
 	//根据差分值和已知x带入多项式预测结果	
 	return t;
 }
-double DeptComputer::newtoncont(double a,double b,int n){
+double DeptComputer::newtoncont(double a,double b,int n,double (*comp1)(double)){
+	double C0[5][7]={
+			{
+			2,1,1
+			},
+			{
+			6,1,4,1
+			},
+			{
+			8,1,3,3,1	
+			},
+			{
+			90,7,32,12,32,7	
+			},
+			{
+			288,19,100,50,50,100,19	
+			} 
+};
 	//假设函数为y=sqrt(x) 
 	double t=(b-a)*1.0/n;//步长
 	double res=b-a;
@@ -91,7 +109,7 @@ double DeptComputer::newtoncont(double a,double b,int n){
 		count=count+t;
 		cout<<count<<endl;
 	double size=C0[n-1][0];//分母 
-			mres+=(((C0[n-1][i+1]*1.0))/size)*sqrt(count);
+			mres+=(((C0[n-1][i+1]*1.0))/size)*(comp1(count));
 	}
 	return res*mres;
 }

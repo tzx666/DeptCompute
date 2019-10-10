@@ -1,6 +1,6 @@
 <Projects version="2.0">
 	<Project active="1">DeptCompute.cfp</Project>
-	<File active="1">..\Header-Files\Compute.cpp</File>
-	<File active="0">..\Source-Files\test.cpp</File>
+	<File active="0">..\Header-Files\Compute.cpp</File>
+	<File active="1">..\Source-Files\test.cpp</File>
 	<File active="0">..\Header-Files\Compute.h</File>
 </Projects>
