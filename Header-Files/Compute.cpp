@@ -2,6 +2,9 @@
 #include<cmath>
 #include<iostream>
 using namespace std;
+DeptComputer::DeptComputer(){
+
+}
 int DeptComputer::multinomialReduction(vector<int>q,int x){
     int v=q[0],b;
     for(int i=1;i<q.size();i++){
@@ -76,4 +79,19 @@ double DeptComputer::newtion(double X,vector<double>Xi,vector<double>Yi){
 	}
 	//根据差分值和已知x带入多项式预测结果	
 	return t;
+}
+double DeptComputer::newtoncont(double a,double b,int n){
+	//假设函数为y=sqrt(x) 
+	double t=(b-a)*1.0/n;//步长
+	double res=b-a;
+	double count=a;
+	double mres=0;
+	for(int i=0;i<=n;i++){
+		if(i>0)
+		count=count+t;
+		cout<<count<<endl;
+	double size=C0[n-1][0];//分母 
+			mres+=(((C0[n-1][i+1]*1.0))/size)*sqrt(count);
+	}
+	return res*mres;
 }
