@@ -1,13 +1,16 @@
 #include<iostream>
 #include<vector>
 #include<cmath>
-#include<Compute.h>
 using namespace std;
-double computs(double t){
-	return sqrt(t);
+double cops(double x) {
+	if (x == 0)
+		return 1.0;
+	//cout << x << " " << sin(x) << endl;
+	return sin(x)/x;
 }
-int main(){
-    DeptComputer d;
-    cout<<d.newtoncont(0.5,1,4,computs)<<endl;
-    return 0;
+int main() {
+	DeptComputer compute;
+	double res = compute.Gauss1(0, 1,  cops);
+	double res1=compute.newtoncont(0, 1, 4, cops);
+	cout << res <<" "<<res1<< endl;
 }

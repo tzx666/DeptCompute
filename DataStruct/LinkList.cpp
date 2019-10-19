@@ -1,65 +1,6 @@
+#include"LinkList.h"
 #include<iostream>
 using namespace std;
-class LinkList {
-	//内部封装一个链表，实现链表的增删查改
-private:
-	struct node {
-		int value;
-		struct node* next;
-	};
-	typedef struct node* Lists;
-	node* head;
-	Lists getStructData(Lists &l,int index) {
-		Lists p = l->next;
-		int count = 0;
-		if (index < 0)
-			return NULL;
-		if (l ==NULL)
-			return NULL;
-		while (p != NULL) {
-			if (count == index)
-				return p;
-			count++; p = p->next;
-		}
-		return NULL;
-	}//根据顺序寻找链表全局返回某个给定索引
-	Lists getListData(Lists& l, int n) {
-		Lists p = l->next;
-		if (l == NULL)
-			return NULL;
-		while (p != NULL) {
-			if (n==p->value)
-				return p;
-			p = p->next;
-		}
-		return NULL;
-	}//根据查找数值返回第一个并返回该节点链表指针
-public:
-	LinkList();
-	int addAtTail(int n);//在链表末端插入一节点
-	int insertNewNode(int n, int value);//在给定值后面插入节点
-	int deletenode(int n);//删除给定节点
-	int getIndex(int n);//查询该节点是否存在，如果存在则返回该节点
-	int gets(int index) {
-		Lists p = getStructData(head, index);
-		if (p != NULL)
-			return p->value;
-		else
-			return -1;
-	}//根据链表节点返回链表结点的值
-	int cleanList();//清空链表
-	int get(int index);//获取第index个节点，如果节点无效则返回-1
-	int addAtHead(int n) {
-		Lists p = new node;
-		p->value = n;
-		p->next = head->next;
-		head->next = p;
-		return 0;
-	}//前插入链表
-	void addAtIndex(int index, int val);//向index前的某个插入节点
-	void deleteAtIndex(int index);//删除有效地址的节点
-	void show();//显示链表
-};
 LinkList::LinkList() {
 	head = new node;
 	head->next = nullptr;
@@ -187,15 +128,17 @@ void LinkList::deleteAtIndex(int index) {
 		p = p->next;
 	}
 }
-int main() {
-	LinkList list = LinkList();
-	list.addAtHead(1);
-	list.addAtTail(3);
-	list.addAtIndex(1,2);
-	list.show();
-	cout << list.gets(0) << endl;
-	cout << list.gets(1) << endl;
-	cout << list.gets(2) << endl;
-	cout << list.gets(3) << endl;
+int LinkList::gets(int index) {
+	Lists p = getStructData(head, index);
+	if (p != NULL)
+		return p->value;
+	else
+		return -1;
+}
+int LinkList::addAtHead(int n) {
+	Lists p = new node;
+	p->value = n;
+	p->next = head->next;
+	head->next = p;
 	return 0;
 }
